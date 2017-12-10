@@ -22,7 +22,6 @@ var reset = function() {
   guessesLeft = 9;
   guessesSoFar = [];
   updateRandomLetter();
-  console.log("test");
 }
 
 
@@ -34,12 +33,13 @@ document.onkeyup = function(event) {
   guessesLeft--;
   document.querySelector("#guesses-left").innerHTML = guessesLeft;
 
-  // Write chosen randomLetter to "user-input" span id in 'Your Guesses so far' - How do I get this to list the letters rather than overwrite each entry?
-  document.querySelector("#user-input").innerHTML = guessesSoFar;
+  // Write chosen randomLetter to "user-input" span id in 'Your Guesses so far'
   guessesSoFar.push(userInput);
+  document.querySelector("#user-input").innerHTML = guessesSoFar;
+
   console.log(guessesSoFar);
 
-  // Compare userInput to randomLetter - Why is there a delay of keystroke in resetting Guesses to 9?
+  // Compare userInput to randomLetter
   if (userInput == randomLetter) {
     numberWins++;
     console.log(guessesLeft);
