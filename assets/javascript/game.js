@@ -1,16 +1,16 @@
 window.onload = function() {
 
-// Set scores to 0 and guesses remaining to 9
-numberWins = 0;
-numberLosses = 0;
-guessesLeft = 9;
-guessesSoFar = [];
+// Global variables
+var numberWins = 0;
+var numberLosses = 0;
+var guessesLeft = 9;
+var guessesSoFar = [];
+var randomLetter = null;
 
 // Set variable to define all the possible letters to choose from
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // Randomly choose a letter from the letters array.
-var randomLetter = null;
 var updateRandomLetter = function() {
   randomLetter = letters[Math.floor(Math.random() * letters.length)]
 };
@@ -22,14 +22,14 @@ var reset = function() {
   guessesLeft = 9;
   guessesSoFar = [];
   updateRandomLetter();
+  console.log(randomLetter);
 }
-
 
 // Define function to detect when user presses a keystroke
 document.onkeyup = function(event) {
 
 // Determine which key was pressed, reduce guesses left by 1, write guesses left to 'guesses-left' span id
-  var userInput = event.key;
+  userInput = event.key;
   guessesLeft--;
   document.querySelector("#guesses-left").innerHTML = guessesLeft;
 
@@ -44,11 +44,17 @@ document.onkeyup = function(event) {
     numberWins++;
     document.querySelector("#wins").innerHTML = numberWins;
     reset();
+    document.querySelector("#guesses-left").innerHTML = guessesLeft;
+    document.querySelector("#user-input").innerHTML = guessesSoFar;
+
   } if (guessesLeft === 0) {
     numberLosses++;
     document.querySelector("#losses").innerHTML = numberLosses;
     reset();
+    document.querySelector("#guesses-left").innerHTML = guessesLeft;
+    document.querySelector("#user-input").innerHTML = guessesSoFar;
   }
+
 };
 
 };
