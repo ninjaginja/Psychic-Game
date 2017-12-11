@@ -42,7 +42,6 @@ document.onkeyup = function(event) {
   // Compare userInput to randomLetter
   if (userInput == randomLetter) {
     numberWins++;
-    console.log(guessesLeft);
     document.querySelector("#wins").innerHTML = numberWins;
     reset();
   } if (guessesLeft === 0) {
